@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Advent Pro' rel='stylesheet'>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <pre id="debug"></pre>
+    <h1> Input the fraction you would like displayed: </h1>
+    <div id="input">
+        <div id="fracInput">
+            <input type="text" id="numerator">
+            <hr id="fracBar">
+            <input type="text" id="denominator">
+        </div>
+        <button class="blueButton" id="generate"> Generate Fraction Bar </button>
+        <aside>
+            <p id=requirements> Works best with denominators 30 or less. And proper fractions only. </p>
+        </aside>
+    </div>
+
+    <br>
+
+    <canvas id="bar" width="700" height="100">
+        This browser doesn't support canvas elements. Try a different browser.
+    </canvas>
+    <br>
+    <button class="blueButton" id="pngButton"> Download PNG </button>
+</body>
+<script src="script.js"></script>
+
+</html>
