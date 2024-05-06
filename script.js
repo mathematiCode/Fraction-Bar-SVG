@@ -5,7 +5,7 @@ let denominatorInput = document.getElementById("denominator");
 let numeratorInput = document.getElementById("numerator");
 let generateButton = document.getElementById("generate");
 let pngButton = document.getElementById("pngButton");
-let debug = document.querySelector("#debug");
+//  let debug = document.querySelector("#debug");
 
 
 function makeBar(numerator, denominator) {
@@ -21,8 +21,16 @@ function makeBar(numerator, denominator) {
     let separator = interval;
 
     let shaded = interval * numerator;
+    bar.fillStyle = "white";
+    bar.fillRect(0, 0, fractionBar.width, fractionBar.height);
     bar.fillStyle = "rgb(120, 190, 250)";
     bar.fillRect(0, 0, shaded, 100);
+
+    // Change to black first then white on top.
+    bar.strokeStyle = 'black';
+    bar.lineWidth = '70 px';
+    bar.strokeRect(2.5, 2.5, fractionBar.width - 5, fractionBar.height - 5);
+
 
     for (let i = 1; i < denominator; i++) {
         bar.beginPath();
@@ -43,9 +51,7 @@ generateButton.addEventListener("click", function () {
 
 function downloadPic() {
     const canvas = document.getElementById("bar") // Gets canvas element from html
-    //const dataURL = canvas.toDataURL("image/png");
     const link = document.createElement('a');
-    //link.href = dataURL;
     link.href = canvas.toDataURL("image/png");
     link.download = 'canvas_image.png';
     document.body.appendChild(link);
@@ -55,5 +61,4 @@ function downloadPic() {
 
 pngButton.addEventListener("click", function () {
     downloadPic();
-    console.log("Button Clicked!")
 })
