@@ -7,6 +7,7 @@ let generateButton = document.getElementById("generate");
 let pngButton = document.getElementById("pngButton");
 //  let debug = document.querySelector("#debug");
 
+let borderWidth = 5;
 
 function makeBar(numerator, denominator) {
     if (numerator > denominator) {
@@ -16,20 +17,20 @@ function makeBar(numerator, denominator) {
             }`
         );
     }
+
     bar.clearRect(0, 0, fractionBar.width, fractionBar.height);
     let interval = 700 / denominator;
     let separator = interval;
 
     let shaded = interval * numerator;
-    bar.fillStyle = "white";
+    bar.fillStyle = "black";
     bar.fillRect(0, 0, fractionBar.width, fractionBar.height);
+    bar.fillStyle = "white";
+    bar.fillRect(borderWidth, borderWidth, fractionBar.width - 5 - borderWidth, fractionBar.height - 5 - borderWidth);
     bar.fillStyle = "rgb(120, 190, 250)";
-    bar.fillRect(0, 0, shaded, 100);
+    //bar.fillRect(0, 0, shaded, 100);
+    bar.fillRect(borderWidth, borderWidth, shaded - 5, 95 - borderWidth);
 
-    // Change to black first then white on top.
-    bar.strokeStyle = 'black';
-    bar.lineWidth = '70 px';
-    bar.strokeRect(2.5, 2.5, fractionBar.width - 5, fractionBar.height - 5);
 
 
     for (let i = 1; i < denominator; i++) {
