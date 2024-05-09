@@ -5,9 +5,8 @@ let denominatorInput = document.getElementById("denominator");
 let numeratorInput = document.getElementById("numerator");
 let generateButton = document.getElementById("generate");
 let pngButton = document.getElementById("pngButton");
-//  let debug = document.querySelector("#debug");
 
-let borderWidth = 5;
+let borderWidth = 5; // I may make this customizable later. 
 
 function makeBar(numerator, denominator) {
     if (numerator > denominator) {
