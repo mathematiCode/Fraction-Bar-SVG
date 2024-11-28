@@ -7,46 +7,47 @@ let generateButton = document.getElementById("generate");
 let pngButton = document.getElementById("pngButton");
 
 let borderWidth = 5; // I may make this customizable later. 
+let colorFill = "rgb(120, 190, 250)";
 
-function makeBar(numerator, denominator) {
-    if (numerator > denominator) {
-        return alert(
-            `Please enter a proper fraction. num=${numerator} denom=${denominator} ${
-                numerator > denominator
-            }`
-        );
-    }
+function makeBar(numerator, denominator, borderWidth, colorFill) {
+        if (numerator > denominator) {
+            return alert(
+                `Please enter a proper fraction. num=${numerator} denom=${denominator} ${
+                    numerator > denominator
+                }`
+            );
+        }
 
-    bar.clearRect(0, 0, fractionBar.width, fractionBar.height);
-    let interval = 700 / denominator;
-    let separator = interval;
+        bar.clearRect(0, 0, fractionBar.width, fractionBar.height);
+        let interval = 700 / denominator;
+        let separator = interval;
 
-    let shaded = interval * numerator;
-    bar.fillStyle = "black";
-    bar.fillRect(0, 0, fractionBar.width, fractionBar.height);
-    bar.fillStyle = "white";
-    bar.fillRect(borderWidth, borderWidth, fractionBar.width - 5 - borderWidth, fractionBar.height - 5 - borderWidth);
-    bar.fillStyle = "rgb(120, 190, 250)";
-    //bar.fillRect(0, 0, shaded, 100);
-    bar.fillRect(borderWidth, borderWidth, shaded - 5, 95 - borderWidth);
+        let shaded = interval * numerator;
+        bar.fillStyle = "black";
+        bar.fillRect(0, 0, fractionBar.width, fractionBar.height);
+        bar.fillStyle = "white";
+        bar.fillRect(borderWidth, borderWidth, fractionBar.width - (borderWidth*2), fractionBar.height - (borderWidth*2));
+        bar.fillStyle = colorFill;
+        //bar.fillRect(0, 0, shaded, 100);
+        bar.fillRect(borderWidth, borderWidth, shaded - 5, 95 - borderWidth);
 
 
 
-    for (let i = 1; i < denominator; i++) {
-        bar.beginPath();
-        bar.moveTo(separator, 0);
-        bar.lineTo(separator, 100);
-        bar.closePath();
-        bar.lineWidth = 5;
-        bar.stroke();
-        separator = separator + interval;
-    }
+        for (let i = 1; i < denominator; i++) {
+            bar.beginPath();
+            bar.moveTo(separator, 0);
+            bar.lineTo(separator, 100);
+            bar.closePath();
+            bar.lineWidth = 5;
+            bar.stroke();
+            separator = separator + interval;
+        }
 }
 
 generateButton.addEventListener("click", function () {
     let numerator = parseInt(numeratorInput.value);
     let denominator = parseInt(denominatorInput.value);
-    makeBar(numerator, denominator);
+    makeBar(numerator, denominator, borderWidth, colorFill);
 });
 
 function downloadPic() {
